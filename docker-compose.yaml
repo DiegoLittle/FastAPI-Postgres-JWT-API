@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    container_name: docker-fastapi
+    restart: always
+    build: .
+    ports:
+      - '8000:8000'
+    links:
+      - postgres
+  postgres:
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=yz9oTn1AvH0vGer#pJip&vF
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+networks:
+  default:
+    external: true
+    name: proxy_gateway_default
